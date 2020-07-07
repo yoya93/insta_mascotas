@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-instamascotas-dev-03915-authRole",
+            "UnauthRoleArn": "arn:aws:iam::112646120612:role/amplify-instamascotas-dev-03915-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::112646120612:role/amplify-instamascotas-dev-03915-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-instamascotas-dev-03915-deployment",
+            "UnauthRoleName": "amplify-instamascotas-dev-03915-unauthRole",
+            "StackName": "amplify-instamascotas-dev-03915",
+            "StackId": "arn:aws:cloudformation:us-east-2:112646120612:stack/amplify-instamascotas-dev-03915/d25db030-c00b-11ea-87c5-060a55e3d44e",
+            "AmplifyAppId": "di6zgl07467qm"
+        },
+        "categories": {
+            "auth": {
+                "instamascotas63c6af41": {}
+            }
+        }
+    }
+}
