@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Category } from "../Category";
 import { List, Item } from "./styles";
-import { categories } from "../../api/db.json";
+
+import { API } from "aws-amplify";
 
 export const ListOfCategories = () => {
   const [showFixed, setShowFixed] = useState(false);
+  const [state, setState] = useState([]);
 
   useEffect(
     function () {
@@ -21,9 +23,22 @@ export const ListOfCategories = () => {
     [showFixed]
   );
 
+  useEffect(() => {
+    const getPlans = async () => {
+      try {
+        const categoriesData = await API.get("amplifyrestapi", "/mascot");
+        setState(categoriesData.mascot);
+      } catch (err) {
+        console.log("error fetching from Lambda API");
+      }
+    };
+
+    getPlans();
+  }, []);
+
   const ListRender = (fixed) => (
     <List fixed={fixed}>
-      {categories.map((category) => (
+      {state.map((category) => (
         <Item key={category.id}>
           <Category {...category} />
         </Item>
