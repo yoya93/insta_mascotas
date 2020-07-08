@@ -1,0 +1,37 @@
+{
+    "paths": [
+        {
+            "name": "/mascot",
+            "lambdaFunction": "instamascotas2ded6e1f",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/GET"
+                ]
+            }
+        }
+    ],
+    "resourceName": "amplifyrestapi",
+    "apiName": "amplifyrestapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "instamascotas2ded6e1f"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 0,
+        "authRoleName": "amplify-instamascotas-dev-03915-authRole",
+        "unAuthRoleName": "amplify-instamascotas-dev-03915-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "instamascotas2ded6e1f",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
