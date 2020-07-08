@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { ListOfCategories } from "./components/ListOfCategories";
 
 import { GlobalStyle } from "./styles/GlobalStyles";
@@ -7,13 +7,22 @@ import { Logo } from "./components/Logo";
 import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
 
 const App = () => {
+  const urlParams = new window.URLSearchParams(window.location.search);
+  const detailId = urlParams.get("detail");
+
   return (
     <div>
       <GlobalStyle />
       <Logo />
-      <ListOfCategories />
-      <ListOfPhotoCards />
-      <AmplifySignOut />
+      {detailId ? (
+        <ListOfPhotoCards detailId={detailId} />
+      ) : (
+        <Fragment>
+          <ListOfCategories />
+          <ListOfPhotoCards />
+          <AmplifySignOut />
+        </Fragment>
+      )}
     </div>
   );
 };

@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 
 import { PhotoCard } from "../PhotoCard";
 import { API } from "aws-amplify";
 import LinearProgress from "@material-ui/core/LinearProgress";
 
-export const ListOfPhotoCards = () => {
+export const ListOfPhotoCards = (props) => {
   const [state, setState] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { detailId } = props;
+
   useEffect(() => {
-    const getPlans = async () => {
+    const getData = async () => {
       try {
         const photosData = await API.get("amplifyrestapi", "/mascot/photocard");
         setState(photosData.photocard);
@@ -18,14 +20,24 @@ export const ListOfPhotoCards = () => {
       }
     };
 
-    console.log(state);
-
-    getPlans();
+    getData();
   }, []);
   return !loading ? (
     <LinearProgress />
+  ) : detailId ? (
+    <Fragment>
+      <ul>
+        {state.map((photo) => {
+          return (
+            photo.id === Number(detailId) && (
+              <PhotoCard key={photo.id} {...photo} />
+            )
+          );
+        })}
+      </ul>
+    </Fragment>
   ) : (
-    <div>
+    <Fragment>
       <ul>
         {state.map((photo) => (
           <li key={photo.id}>
@@ -33,6 +45,6 @@ export const ListOfPhotoCards = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </Fragment>
   );
 };
