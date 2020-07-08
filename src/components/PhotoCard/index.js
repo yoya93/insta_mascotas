@@ -42,7 +42,7 @@ export const PhotoCard = (props) => {
     <Article ref={element}>
       {show && (
         <div>
-          <a href={`/detail/${props.id}`}>
+          <a href={`/?detail=${props.id}`}>
             <ImgWrapper>
               <Img src={props.src} />
             </ImgWrapper>

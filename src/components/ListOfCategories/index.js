@@ -24,7 +24,7 @@ export const ListOfCategories = () => {
   );
 
   useEffect(() => {
-    const getPlans = async () => {
+    const getData = async () => {
       try {
         const categoriesData = await API.get("amplifyrestapi", "/mascot");
         setState(categoriesData.mascot);
@@ -33,7 +33,7 @@ export const ListOfCategories = () => {
       }
     };
 
-    getPlans();
+    getData();
   }, []);
 
   const ListRender = (fixed) => (
