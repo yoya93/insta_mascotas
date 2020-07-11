@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Img, ImgWrapper, Button, Article } from "./styles";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
+import { API } from "aws-amplify";
 
 export const PhotoCard = (props) => {
   const { id } = props;
@@ -38,6 +39,30 @@ export const PhotoCard = (props) => {
     }
   };
 
+  const putData = async () => {
+    try {
+      const data = {
+        id: 56,
+        categoryId: 2,
+        src:
+          "https://res.cloudinary.com/midudev/image/upload/w_300/q_80/v1560262103/dogs.png",
+        userId: 100,
+        likes: 37,
+      };
+
+      const photosData = await API.put(
+        "amplifyrestapi",
+        "/mascot/photocard/0",
+        {
+          data,
+        }
+      );
+      console.log(photosData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <Article ref={element}>
       {show && (
@@ -47,11 +72,7 @@ export const PhotoCard = (props) => {
               <Img src={props.src} />
             </ImgWrapper>
           </a>
-          <Button
-            onClick={() => {
-              setLocalStorage(!likes);
-            }}
-          >
+          <Button onClick={putData}>
             {likes ? (
               <MdFavorite size="32px" />
             ) : (

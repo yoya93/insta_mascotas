@@ -9,6 +9,14 @@
 		},
 		"env": {
 			"Type": "String"
+		},
+		"storagemascotsName": {
+			"Type": "String",
+			"Default": "storagemascotsName"
+		},
+		"storagemascotsArn": {
+			"Type": "String",
+			"Default": "storagemascotsArn"
 		}
 	},
 	"Conditions": {
@@ -33,12 +41,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"amplifyrestapifunction",
+						"mascots",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"amplifyrestapifunction",
+									"mascots",
 									"-",
 									{
 										"Ref": "env"
@@ -68,7 +76,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-instamascotas-dev-03915-deployment",
-					"S3Key": "amplify-builds/instamascotas2ded6e1f-6a43694b7856654c704a-build.zip"
+					"S3Key": "amplify-builds/mascos-31575a69596f6a4a3152-build.zip"
 				}
 			}
 		},
@@ -78,12 +86,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"instamascotasLambdaRole546b0f04",
+						"instamascotasLambdaRoled931867c",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"instamascotasLambdaRole546b0f04",
+									"instamascotasLambdaRoled931867c",
 									"-",
 									{
 										"Ref": "env"
@@ -149,6 +157,34 @@
 									}
 								]
 							}
+						},
+						{
+							"Effect": "Allow",
+							"Action": [
+								"dynamodb:DescribeTable",
+								"dynamodb:GetItem",
+								"dynamodb:Query",
+								"dynamodb:Scan",
+								"dynamodb:PutItem",
+								"dynamodb:UpdateItem",
+								"dynamodb:DeleteItem"
+							],
+							"Resource": [
+								{
+									"Ref": "storagemascotsArn"
+								},
+								{
+									"Fn::Join": [
+										"/",
+										[
+											{
+												"Ref": "storagemascotsArn"
+											},
+											"index/*"
+										]
+									]
+								}
+							]
 						}
 					]
 				}
