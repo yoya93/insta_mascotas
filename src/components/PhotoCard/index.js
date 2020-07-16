@@ -1,6 +1,11 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Img, ImgWrapper, Button, Article } from "./styles";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
+import { API } from "aws-amplify";
+
+import { uuid } from "uuidv4";
+
+console.log(uuid());
 
 export const PhotoCard = (props) => {
   const { id } = props;
@@ -38,6 +43,27 @@ export const PhotoCard = (props) => {
     }
   };
 
+  const putData = async () => {
+    try {
+      setLocalStorage(!likes);
+      const likesAument = props.likes + 1;
+      const query = {
+        // OPTIONAL
+        body: {
+          id: props.id,
+          categoryId: props.categoryId,
+          src: props.src,
+          userId: props.userId,
+          likes: likesAument,
+        }, // replace this with attributes you need
+        headers: {}, // OPTIONAL
+      };
+      const photosData = await API.put("mascots", "/mascots/photocard", query);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <Article ref={element}>
       {show && (
@@ -47,11 +73,7 @@ export const PhotoCard = (props) => {
               <Img src={props.src} />
             </ImgWrapper>
           </a>
-          <Button
-            onClick={() => {
-              setLocalStorage(!likes);
-            }}
-          >
+          <Button onClick={putData}>
             {likes ? (
               <MdFavorite size="32px" />
             ) : (

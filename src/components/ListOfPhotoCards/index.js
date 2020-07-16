@@ -12,8 +12,8 @@ export const ListOfPhotoCards = (props) => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const photosData = await API.get("amplifyrestapi", "/mascot/photocard");
-        setState(photosData.photocard);
+        const photosData = await API.get("mascots", "/mascots/photocard");
+        setState(photosData.data);
         setLoading(true);
       } catch (err) {
         console.log("error fetching from Lambda API");
@@ -29,9 +29,7 @@ export const ListOfPhotoCards = (props) => {
       <ul>
         {state.map((photo) => {
           return (
-            photo.id === Number(detailId) && (
-              <PhotoCard key={photo.id} {...photo} />
-            )
+            photo.id === detailId && <PhotoCard key={photo.id} {...photo} />
           );
         })}
       </ul>

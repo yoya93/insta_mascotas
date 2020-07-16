@@ -1,21 +1,25 @@
 {
     "paths": [
         {
-            "name": "/mascot",
-            "lambdaFunction": "instamascotas2ded6e1f",
+            "name": "/mascots",
+            "lambdaFunction": "mascos",
             "privacy": {
                 "private": true,
                 "auth": [
-                    "/GET"
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
                 ]
             }
         }
     ],
-    "resourceName": "amplifyrestapi",
-    "apiName": "amplifyrestapi",
+    "resourceName": "mascots",
+    "apiName": "mascots",
     "functionArns": [
         {
-            "lambdaFunction": "instamascotas2ded6e1f"
+            "lambdaFunction": "mascos"
         }
     ],
     "privacy": {
@@ -27,7 +31,7 @@
     "dependsOn": [
         {
             "category": "function",
-            "resourceName": "instamascotas2ded6e1f",
+            "resourceName": "mascos",
             "attributes": [
                 "Name",
                 "Arn"

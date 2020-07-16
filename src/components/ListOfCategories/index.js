@@ -26,10 +26,11 @@ export const ListOfCategories = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const categoriesData = await API.get("amplifyrestapi", "/mascot");
-        setState(categoriesData.mascot);
+        const categoriesData = await API.get("mascots", "/mascots");
+
+        setState(categoriesData.data);
       } catch (err) {
-        console.log("error fetching from Lambda API");
+        console.log("error fetching from Lambda APIwwwww");
       }
     };
 

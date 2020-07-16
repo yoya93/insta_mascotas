@@ -14,15 +14,15 @@
         },
     
     
-          "functioninstamascotas2ded6e1fName": {
+          "functionmascosName": {
             "Type": "String",
-            "Default": "functioninstamascotas2ded6e1fName"
+            "Default": "functionmascosName"
           },
         
           
-          "functioninstamascotas2ded6e1fArn": {
+          "functionmascosArn": {
             "Type": "String",
-            "Default": "functioninstamascotas2ded6e1fArn"
+            "Default": "functionmascosArn"
           }
         
           
@@ -41,13 +41,13 @@
     },
     "Resources": {
         
-        "PolicyAPIGWamplifyrestapiauth": {
+        "PolicyAPIGWmascotsauth": {
             "DependsOn": [
-              "amplifyrestapi"
+              "mascots"
             ],
             "Type": "AWS::IAM::Policy",
             "Properties": {
-              "PolicyName": "PolicyAPIGWamplifyrestapiauth",
+              "PolicyName": "PolicyAPIGWmascotsauth",
               "Roles": [
                 {"Ref": "authRoleName"}
               ],
@@ -77,7 +77,7 @@
                             },
                             ":",
                             {
-                              "Ref": "amplifyrestapi"
+                              "Ref": "mascots"
                             },
                             "/",
                             {
@@ -89,8 +89,8 @@
                                 } 
                               ]
                             },
-                              "/GET",
-                            "/mascot/*"
+                              "/POST",
+                            "/mascots/*"
                           ]
                         ]
                       },
@@ -108,7 +108,42 @@
                             },
                             ":",
                             {
-                              "Ref": "amplifyrestapi"
+                              "Ref": "mascots"
+                            },
+                            "/",
+                            {
+                              "Fn::If": [
+                                "ShouldNotCreateEnvResources",
+                                "Prod", 
+                                {
+                                  "Ref": "env"
+                                } 
+                              ]
+                            },
+                              "/POST",
+                            "/mascots"
+                          ]
+                        ]
+                      }
+                    
+                      ,
+                    
+                    
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:aws:execute-api:",
+                            {
+                              "Ref": "AWS::Region"
+                            },
+                            ":",
+                            {
+                              "Ref": "AWS::AccountId"
+                            },
+                            ":",
+                            {
+                              "Ref": "mascots"
                             },
                             "/",
                             {
@@ -121,7 +156,236 @@
                               ]
                             },
                               "/GET",
-                            "/mascot"
+                            "/mascots/*"
+                          ]
+                        ]
+                      },
+                                            {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:aws:execute-api:",
+                            {
+                              "Ref": "AWS::Region"
+                            },
+                            ":",
+                            {
+                              "Ref": "AWS::AccountId"
+                            },
+                            ":",
+                            {
+                              "Ref": "mascots"
+                            },
+                            "/",
+                            {
+                              "Fn::If": [
+                                "ShouldNotCreateEnvResources",
+                                "Prod", 
+                                {
+                                  "Ref": "env"
+                                } 
+                              ]
+                            },
+                              "/GET",
+                            "/mascots"
+                          ]
+                        ]
+                      }
+                    
+                      ,
+                    
+                    
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:aws:execute-api:",
+                            {
+                              "Ref": "AWS::Region"
+                            },
+                            ":",
+                            {
+                              "Ref": "AWS::AccountId"
+                            },
+                            ":",
+                            {
+                              "Ref": "mascots"
+                            },
+                            "/",
+                            {
+                              "Fn::If": [
+                                "ShouldNotCreateEnvResources",
+                                "Prod", 
+                                {
+                                  "Ref": "env"
+                                } 
+                              ]
+                            },
+                              "/PUT",
+                            "/mascots/*"
+                          ]
+                        ]
+                      },
+                                            {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:aws:execute-api:",
+                            {
+                              "Ref": "AWS::Region"
+                            },
+                            ":",
+                            {
+                              "Ref": "AWS::AccountId"
+                            },
+                            ":",
+                            {
+                              "Ref": "mascots"
+                            },
+                            "/",
+                            {
+                              "Fn::If": [
+                                "ShouldNotCreateEnvResources",
+                                "Prod", 
+                                {
+                                  "Ref": "env"
+                                } 
+                              ]
+                            },
+                              "/PUT",
+                            "/mascots"
+                          ]
+                        ]
+                      }
+                    
+                      ,
+                    
+                    
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:aws:execute-api:",
+                            {
+                              "Ref": "AWS::Region"
+                            },
+                            ":",
+                            {
+                              "Ref": "AWS::AccountId"
+                            },
+                            ":",
+                            {
+                              "Ref": "mascots"
+                            },
+                            "/",
+                            {
+                              "Fn::If": [
+                                "ShouldNotCreateEnvResources",
+                                "Prod", 
+                                {
+                                  "Ref": "env"
+                                } 
+                              ]
+                            },
+                              "/PATCH",
+                            "/mascots/*"
+                          ]
+                        ]
+                      },
+                                            {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:aws:execute-api:",
+                            {
+                              "Ref": "AWS::Region"
+                            },
+                            ":",
+                            {
+                              "Ref": "AWS::AccountId"
+                            },
+                            ":",
+                            {
+                              "Ref": "mascots"
+                            },
+                            "/",
+                            {
+                              "Fn::If": [
+                                "ShouldNotCreateEnvResources",
+                                "Prod", 
+                                {
+                                  "Ref": "env"
+                                } 
+                              ]
+                            },
+                              "/PATCH",
+                            "/mascots"
+                          ]
+                        ]
+                      }
+                    
+                      ,
+                    
+                    
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:aws:execute-api:",
+                            {
+                              "Ref": "AWS::Region"
+                            },
+                            ":",
+                            {
+                              "Ref": "AWS::AccountId"
+                            },
+                            ":",
+                            {
+                              "Ref": "mascots"
+                            },
+                            "/",
+                            {
+                              "Fn::If": [
+                                "ShouldNotCreateEnvResources",
+                                "Prod", 
+                                {
+                                  "Ref": "env"
+                                } 
+                              ]
+                            },
+                              "/DELETE",
+                            "/mascots/*"
+                          ]
+                        ]
+                      },
+                                            {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:aws:execute-api:",
+                            {
+                              "Ref": "AWS::Region"
+                            },
+                            ":",
+                            {
+                              "Ref": "AWS::AccountId"
+                            },
+                            ":",
+                            {
+                              "Ref": "mascots"
+                            },
+                            "/",
+                            {
+                              "Fn::If": [
+                                "ShouldNotCreateEnvResources",
+                                "Prod", 
+                                {
+                                  "Ref": "env"
+                                } 
+                              ]
+                            },
+                              "/DELETE",
+                            "/mascots"
                           ]
                         ]
                       }
@@ -141,16 +405,16 @@
         
         
         
-      "amplifyrestapi": {
+      "mascots": {
         "Type": "AWS::ApiGateway::RestApi",
         "Properties": {
           "Description": "",
-          "Name": "amplifyrestapi",
+          "Name": "mascots",
           "Body": {
             "swagger": "2.0",
             "info": {
               "version": "2018-05-24T17:52:00Z",
-              "title": "amplifyrestapi"
+              "title": "mascots"
             },
             "host": {
                 "Fn::Join": [
@@ -186,7 +450,7 @@
             ],
             "paths": {
               
-              "/mascot": {
+              "/mascots": {
                 "options": {
                   "consumes": [
                     "application/json"
@@ -278,7 +542,7 @@
                             
                             {
                                 
-                                "Ref": "functioninstamascotas2ded6e1fArn"
+                                "Ref": "functionmascosArn"
                             },
                             
                             "/invocations"
@@ -291,7 +555,7 @@
                   }
                 }
               },
-              "/mascot/{proxy+}": {
+              "/mascots/{proxy+}": {
                 "options": {
                   "consumes": [
                     "application/json"
@@ -383,7 +647,7 @@
                           
                           {
                             
-                            "Ref": "functioninstamascotas2ded6e1fArn"
+                            "Ref": "functionmascosArn"
                           },
                           
                           "/invocations"
@@ -440,12 +704,12 @@
                   
         
         
-        "functioninstamascotas2ded6e1fPermissionamplifyrestapi": {
+        "functionmascosPermissionmascots": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
                 "FunctionName": 
                     {
-                        "Ref":  "functioninstamascotas2ded6e1fName"
+                        "Ref":  "functionmascosName"
                     },
                     
                     "Action": "lambda:InvokeFunction",
@@ -464,7 +728,7 @@
                             },
                             ":",
                             {
-                                "Ref": "amplifyrestapi"
+                                "Ref": "mascots"
                             },
                             "/*/*/*"
                         ]
@@ -475,7 +739,7 @@
         
         
         
-      "DeploymentAPIGWamplifyrestapi": {
+      "DeploymentAPIGWmascots": {
         "Type": "AWS::ApiGateway::Deployment",
         "Properties": {
           "Description": "The Development stage deployment of your API.",
@@ -489,7 +753,7 @@
             ]
           },
           "RestApiId": {
-            "Ref": "amplifyrestapi"
+            "Ref": "mascots"
           }
         }
       }
@@ -497,15 +761,15 @@
     "Outputs": {
         "RootUrl": {
             "Description": "Root URL of the API gateway",
-            "Value": {"Fn::Join": ["", ["https://", {"Ref": "amplifyrestapi"}, ".execute-api.", {"Ref": "AWS::Region"}, ".amazonaws.com/", {"Fn::If": ["ShouldNotCreateEnvResources","Prod", {"Ref": "env"} ]}]]}
+            "Value": {"Fn::Join": ["", ["https://", {"Ref": "mascots"}, ".execute-api.", {"Ref": "AWS::Region"}, ".amazonaws.com/", {"Fn::If": ["ShouldNotCreateEnvResources","Prod", {"Ref": "env"} ]}]]}
         },
         "ApiName": {
           "Description": "API Friendly name",
-          "Value": "amplifyrestapi"
+          "Value": "mascots"
         },
         "ApiId": {
           "Description": "API ID (prefix of API URL)",
-          "Value": {"Ref": "amplifyrestapi"}
+          "Value": {"Ref": "mascots"}
         }
     }
   }

@@ -8,27 +8,46 @@
 		}
 	},
 	"function": {
-		"instamascotas2ded6e1f": {
+		"mascos": {
 			"build": true,
 			"providerPlugin": "awscloudformation",
 			"service": "Lambda",
-			"dependsOn": []
+			"dependsOn": [
+				{
+					"category": "storage",
+					"resourceName": "mascots",
+					"attributes": [
+						"Name",
+						"Arn"
+					],
+					"attributeEnvMap": {
+						"Name": "TABLE_NAME",
+						"Arn": "TABLE_ARN"
+					}
+				}
+			]
 		}
 	},
 	"api": {
-		"amplifyrestapi": {
+		"mascots": {
 			"service": "API Gateway",
 			"providerPlugin": "awscloudformation",
 			"dependsOn": [
 				{
 					"category": "function",
-					"resourceName": "instamascotas2ded6e1f",
+					"resourceName": "mascos",
 					"attributes": [
 						"Name",
 						"Arn"
 					]
 				}
 			]
+		}
+	},
+	"storage": {
+		"mascots": {
+			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation"
 		}
 	}
 }
