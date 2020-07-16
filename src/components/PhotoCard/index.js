@@ -45,23 +45,20 @@ export const PhotoCard = (props) => {
 
   const putData = async () => {
     try {
-      const data = {
-        id: 56,
-        categoryId: 2,
-        src:
-          "https://res.cloudinary.com/midudev/image/upload/w_300/q_80/v1560262103/dogs.png",
-        userId: 100,
-        likes: 37,
+      setLocalStorage(!likes);
+      const likesAument = props.likes + 1;
+      const query = {
+        // OPTIONAL
+        body: {
+          id: props.id,
+          categoryId: props.categoryId,
+          src: props.src,
+          userId: props.userId,
+          likes: likesAument,
+        }, // replace this with attributes you need
+        headers: {}, // OPTIONAL
       };
-
-      const photosData = await API.put(
-        "amplifyrestapi",
-        "/mascot/photocard/0",
-        {
-          data,
-        }
-      );
-      console.log(photosData);
+      const photosData = await API.put("mascots", "/mascots/photocard", query);
     } catch (err) {
       console.log(err);
     }

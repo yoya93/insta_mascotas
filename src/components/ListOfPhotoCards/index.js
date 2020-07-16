@@ -9,15 +9,10 @@ export const ListOfPhotoCards = (props) => {
   const [loading, setLoading] = useState(false);
   const { detailId } = props;
 
-  console.log(detailId);
-
   useEffect(() => {
     const getData = async () => {
       try {
-        const path2 = "/mascots/photocard";
         const photosData = await API.get("mascots", "/mascots/photocard");
-        console.log(photosData);
-
         setState(photosData.data);
         setLoading(true);
       } catch (err) {

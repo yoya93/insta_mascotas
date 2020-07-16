@@ -128,6 +128,7 @@ app
   .put(function (req, res) {
     var environment = req.query.environment || "dev";
     var tableName = baseTableName + "-" + environment;
+    console.log(req);
     if (userIdPresent) {
       req.body["userId"] =
         req.apiGateway.event.requestContext.identity.cognitoIdentityId ||
@@ -203,6 +204,7 @@ app
   .get(function (req, res) {
     var environment = req.query.environment || "dev";
     var tableName = baseTableName2 + "-" + environment;
+    console.log(req);
 
     var condition = {};
     condition[partitionKeyName] = {
@@ -268,6 +270,7 @@ app
   .put(function (req, res) {
     var environment = req.query.environment || "dev";
     var tableName = baseTableName2 + "-" + environment;
+    console.log(req);
     if (userIdPresent) {
       req.body["userId"] =
         req.apiGateway.event.requestContext.identity.cognitoIdentityId ||
@@ -430,7 +433,7 @@ app.delete(path + "/object" + hashKeyPath + sortKeyPath, function (req, res) {
     }
   });
 });
-app.listen(3000, function () {
+app.listen(3001, function () {
   console.log("App started");
 });
 
