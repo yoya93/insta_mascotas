@@ -9,6 +9,8 @@ export const ListOfPhotoCards = (props) => {
   const [loading, setLoading] = useState(false);
   const { detailId } = props;
 
+  console.log(detailId);
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -32,9 +34,7 @@ export const ListOfPhotoCards = (props) => {
       <ul>
         {state.map((photo) => {
           return (
-            photo.id === Number(detailId) && (
-              <PhotoCard key={photo.id} {...photo} />
-            )
+            photo.id === detailId && <PhotoCard key={photo.id} {...photo} />
           );
         })}
       </ul>
