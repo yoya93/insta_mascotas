@@ -11,6 +11,8 @@ export const PhotoCard = (props) => {
   const { id } = props;
   const key = `like-${id}`;
 
+  const [numLikes, setNumLikes] = useState(props.likes);
+
   const element = useRef(null);
   const [show, setShow] = useState(false);
   const [likes, setLikes] = useState(() => {
@@ -44,9 +46,12 @@ export const PhotoCard = (props) => {
   };
 
   const putData = async () => {
+    let currentLike = numLikes;
     try {
       setLocalStorage(!likes);
-      const likesAument = props.likes + 1;
+      likes ? (currentLike = currentLike - 1) : (currentLike = currentLike + 1);
+      console.log(currentLike);
+
       const query = {
         // OPTIONAL
         body: {
@@ -54,10 +59,11 @@ export const PhotoCard = (props) => {
           categoryId: props.categoryId,
           src: props.src,
           userId: props.userId,
-          likes: likesAument,
+          likes: currentLike,
         }, // replace this with attributes you need
         headers: {}, // OPTIONAL
       };
+
       const photosData = await API.put("mascots", "/mascots/photocard", query);
     } catch (err) {
       console.log(err);
@@ -73,13 +79,18 @@ export const PhotoCard = (props) => {
               <Img src={props.src} />
             </ImgWrapper>
           </a>
-          <Button onClick={putData}>
+          <Button
+            onClick={() => {
+              likes ? setNumLikes(numLikes - 1) : setNumLikes(numLikes + 1);
+              putData();
+            }}
+          >
             {likes ? (
               <MdFavorite size="32px" />
             ) : (
               <MdFavoriteBorder size="32px" />
             )}
-            {props.likes} likes
+            {numLikes} likes
           </Button>
         </div>
       )}
