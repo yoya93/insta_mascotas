@@ -29,7 +29,7 @@ export const ImagCateg = (props) => {
       <ul>
         {state.map((photo) => {
           return (
-            "/pet/" + photo.categoryId === props.location.pathname && (
+            "/pet/" + photo.categoryId + "/" === props.location.pathname && (
               <li key={photo.id}>
                 <PhotoCard {...photo} />
               </li>
