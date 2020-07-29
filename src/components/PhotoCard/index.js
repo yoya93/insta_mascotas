@@ -50,7 +50,6 @@ export const PhotoCard = (props) => {
     try {
       setLocalStorage(!likes);
       likes ? (currentLike = currentLike - 1) : (currentLike = currentLike + 1);
-      console.log(currentLike);
 
       const query = {
         // OPTIONAL
