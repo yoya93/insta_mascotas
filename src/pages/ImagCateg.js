@@ -3,6 +3,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { PhotoCard } from "../components/PhotoCard";
 import { API } from "aws-amplify";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import { ListOfCategories } from "../components/ListOfCategories";
 
 export const ImagCateg = (props) => {
   const [state, setState] = useState([]);
@@ -22,21 +23,26 @@ export const ImagCateg = (props) => {
 
     getData();
   }, []);
-  return !loading ? (
-    <LinearProgress />
-  ) : (
+  return (
     <Fragment>
-      <ul>
-        {state.map((photo) => {
-          return (
-            "/pet/" + photo.categoryId + "/" === props.location.pathname && (
-              <li key={photo.id}>
-                <PhotoCard {...photo} />
-              </li>
-            )
-          );
-        })}
-      </ul>
+      <ListOfCategories />
+      {!loading ? (
+        <LinearProgress />
+      ) : (
+        <Fragment>
+          <ul>
+            {state.map((photo) => {
+              return (
+                "/pet/" + photo.categoryId === props.location.pathname && (
+                  <li key={photo.id}>
+                    <PhotoCard {...photo} />
+                  </li>
+                )
+              );
+            })}
+          </ul>
+        </Fragment>
+      )}
     </Fragment>
   );
 };
