@@ -14,19 +14,21 @@ const App = () => {
 
   return (
     <div>
-      <GlobalStyle />
-      <Logo />
-      {detailId ? (
-        <ListOfPhotoCards detailId={detailId} />
-      ) : (
-        <BrowserRouter>
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/pet/:id" component={ImagCateg} />
-          </Switch>
-          <AmplifySignOut />
-        </BrowserRouter>
-      )}
+      <BrowserRouter>
+        <GlobalStyle />
+        <Logo />
+        {detailId ? (
+          <ListOfPhotoCards detailId={detailId} />
+        ) : (
+          <Fragment>
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/pet/:id" component={ImagCateg} />
+            </Switch>
+            <AmplifySignOut />
+          </Fragment>
+        )}
+      </BrowserRouter>
     </div>
   );
 };
