@@ -8,6 +8,7 @@ import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
 import { Home } from "./pages/Home";
 import { ImagCateg } from "./pages/ImagCateg";
 import { detailPhoto } from "./pages/detailPhoto";
+import { Navbar } from "./components/Navbar/Navbar";
 const App = () => {
   return (
     <div>
@@ -21,6 +22,7 @@ const App = () => {
             <Route path="/detail/:id" component={detailPhoto} />
           </Switch>
           <AmplifySignOut />
+          <Navbar />
         </Fragment>
       </BrowserRouter>
     </div>
