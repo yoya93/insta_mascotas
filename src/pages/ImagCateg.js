@@ -8,6 +8,7 @@ import { ListOfCategories } from "../components/ListOfCategories";
 export const ImagCateg = (props) => {
   const [state, setState] = useState([]);
   const [loading, setLoading] = useState(false);
+  console.log(props.match.params.Category);
 
   useEffect(() => {
     const getData = async () => {
@@ -15,6 +16,7 @@ export const ImagCateg = (props) => {
         const photosData = await API.get("mascots", "/mascots/photocard");
         setState(photosData.data);
         setLoading(true);
+        console.log(state);
       } catch (err) {
         console.log("error fetching from Lambda API");
       }
@@ -32,7 +34,7 @@ export const ImagCateg = (props) => {
           <ul>
             {state.map((photo) => {
               return (
-                "/pet/" + photo.categoryId === props.location.pathname && (
+                photo.categoryId === Number(props.match.params.Category) && (
                   <li key={photo.id}>
                     <PhotoCard {...photo} />
                   </li>
