@@ -8,7 +8,6 @@ import { ListOfCategories } from "../components/ListOfCategories";
 export const ImagCateg = (props) => {
   const [state, setState] = useState([]);
   const [loading, setLoading] = useState(false);
-  console.log(props.match.params.Category);
 
   useEffect(() => {
     const getData = async () => {
