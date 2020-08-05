@@ -8,13 +8,13 @@ export const Navbar = () => {
   return (
     <div>
       <Nav>
-        <Link to="/">
+        <Link exact to="/">
           <MdHome size={SIZE} />
         </Link>
-        <Link to="/pet/:Category">
+        <Link exact to="/pet/:Category">
           <MdFavoriteBorder size={SIZE} />
         </Link>
-        <Link to="/detail/:id">
+        <Link exact to="/detail/:id">
           <MdPersonOutline size={SIZE} />
         </Link>
       </Nav>

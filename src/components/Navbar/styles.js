@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Link as LinkRouter } from "react-router-dom";
-
+import { NavLink } from "react-router-dom";
+import { fadeIn } from "../../styles/animation";
 export const Nav = styled.nav`
   align-items: center;
   background: #fcfcfc;
@@ -18,7 +18,7 @@ export const Nav = styled.nav`
   z-index: 1000;
 `;
 
-export const Link = styled(LinkRouter)`
+export const Link = styled(NavLink)`
   align-items: center;
   color: #888;
   display: inline-flex;
@@ -27,4 +27,17 @@ export const Link = styled(LinkRouter)`
   justify-content: center;
   text-decoration: none;
   width: 100%;
+
+  &[aria-current] {
+    color: #000;
+
+    &:after {
+      ${fadeIn({ time: "0.5s" })};
+      content: ".";
+      position: absolute;
+      bottom: 6px;
+      font-size: 32px;
+      line-height: 20px;
+    }
+  }
 `;
