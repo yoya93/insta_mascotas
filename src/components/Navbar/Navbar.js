@@ -11,10 +11,10 @@ export const Navbar = () => {
         <Link exact to="/">
           <MdHome size={SIZE} />
         </Link>
-        <Link exact to="/pet/:Category">
+        <Link exact to="/fav">
           <MdFavoriteBorder size={SIZE} />
         </Link>
-        <Link exact to="/detail/:id">
+        <Link exact to="/user">
           <MdPersonOutline size={SIZE} />
         </Link>
       </Nav>
