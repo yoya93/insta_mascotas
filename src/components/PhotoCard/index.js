@@ -2,10 +2,8 @@ import React, { useRef, useEffect, useState } from "react";
 import { Img, ImgWrapper, Button, Article } from "./styles";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { API } from "aws-amplify";
-
+import { Link } from "react-router-dom";
 import { uuid } from "uuidv4";
-
-console.log(uuid());
 
 export const PhotoCard = (props) => {
   const { id } = props;
@@ -73,11 +71,11 @@ export const PhotoCard = (props) => {
     <Article ref={element}>
       {show && (
         <div>
-          <a href={`/?detail=${props.id}`}>
+          <Link to={`/detail/${props.id}`}>
             <ImgWrapper>
               <Img src={props.src} />
             </ImgWrapper>
-          </a>
+          </Link>
           <Button
             onClick={() => {
               likes ? setNumLikes(numLikes - 1) : setNumLikes(numLikes + 1);

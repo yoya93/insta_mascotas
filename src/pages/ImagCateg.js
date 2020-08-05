@@ -3,11 +3,12 @@ import React, { Fragment, useEffect, useState } from "react";
 import { PhotoCard } from "../components/PhotoCard";
 import { API } from "aws-amplify";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import { ListOfCategories } from "../components/ListOfCategories";
 
 export const ImagCateg = (props) => {
   const [state, setState] = useState([]);
   const [loading, setLoading] = useState(false);
-  console.log(props.location.pathname);
+  console.log(props.match.params.Category);
 
   useEffect(() => {
     const getData = async () => {
@@ -15,6 +16,7 @@ export const ImagCateg = (props) => {
         const photosData = await API.get("mascots", "/mascots/photocard");
         setState(photosData.data);
         setLoading(true);
+        console.log(state);
       } catch (err) {
         console.log("error fetching from Lambda API");
       }
@@ -22,21 +24,26 @@ export const ImagCateg = (props) => {
 
     getData();
   }, []);
-  return !loading ? (
-    <LinearProgress />
-  ) : (
+  return (
     <Fragment>
-      <ul>
-        {state.map((photo) => {
-          return (
-            "/pet/" + photo.categoryId + "/" === props.location.pathname && (
-              <li key={photo.id}>
-                <PhotoCard {...photo} />
-              </li>
-            )
-          );
-        })}
-      </ul>
+      <ListOfCategories />
+      {!loading ? (
+        <LinearProgress />
+      ) : (
+        <Fragment>
+          <ul>
+            {state.map((photo) => {
+              return (
+                photo.categoryId === Number(props.match.params.Category) && (
+                  <li key={photo.id}>
+                    <PhotoCard {...photo} />
+                  </li>
+                )
+              );
+            })}
+          </ul>
+        </Fragment>
+      )}
     </Fragment>
   );
 };
