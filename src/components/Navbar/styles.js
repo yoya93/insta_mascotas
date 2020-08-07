@@ -12,7 +12,7 @@ export const Nav = styled.nav`
   left: 0;
   margin: 0 auto;
   max-width: 500px;
-  position: fixed;
+  position: inherit;
   right: 0;
   width: 100%;
   z-index: 1000;
@@ -34,10 +34,10 @@ export const Link = styled(NavLink)`
     &:after {
       ${fadeIn({ time: "0.5s" })};
       content: ".";
-      position: absolute;
-      bottom: 6px;
+      position: fixed;
       font-size: 32px;
       line-height: 20px;
+      margin-top: 10px;
     }
   }
 `;
