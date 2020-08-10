@@ -15,9 +15,11 @@ export const PhotoCard = (props) => {
   const [show, setShow] = useState(false);
   const [likes, setLikes] = useState(() => {
     try {
-      const like = window.localStorage.getItem(key);
+      const like = window.localStorage.getItem(key) === "true";
       return like;
     } catch (error) {
+      console.log(error);
+
       return false;
     }
   });
@@ -78,14 +80,14 @@ export const PhotoCard = (props) => {
           </Link>
           <Button
             onClick={() => {
-              likes ? setNumLikes(numLikes - 1) : setNumLikes(numLikes + 1);
+              !likes ? setNumLikes(numLikes + 1) : setNumLikes(numLikes - 1);
               putData();
             }}
           >
-            {likes ? (
-              <MdFavorite size="32px" />
-            ) : (
+            {!likes ? (
               <MdFavoriteBorder size="32px" />
+            ) : (
+              <MdFavorite size="32px" />
             )}
             {numLikes} likes
           </Button>
