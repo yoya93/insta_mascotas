@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-
+import Amplify, { Auth } from "aws-amplify";
 import { GlobalStyle } from "./styles/GlobalStyles";
 import { ListOfPhotoCards } from "./components/ListOfPhotoCards";
 import { Logo } from "./components/Logo";
@@ -13,6 +13,20 @@ import { Fav } from "./pages/Fav";
 import { User } from "./pages/User";
 
 const App = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        let res = await Auth.currentUserInfo();
+        setUser(res);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    fetchUser();
+  }, []);
   return (
     <div>
       <BrowserRouter>
@@ -24,7 +38,10 @@ const App = () => {
             <Route path="/pet/:Category" component={ImagCateg} />
             <Route path="/detail/:id" component={detailPhoto} />
             <Route path="/fav" component={Fav} />
-            <Route path="/user" component={User} />
+            <Route
+              path="/user"
+              render={(props) => <User {...props} user={user} />}
+            />
           </Switch>
 
           <Navbar />
