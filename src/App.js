@@ -1,20 +1,17 @@
 import React from "react";
-import { ListOfCategories } from "./components/ListOfCategories";
 
-import { GlobalStyle } from "./styles/GlobalStyles";
-import { ListOfPhotoCards } from "./components/ListOfPhotoCards";
-import { Logo } from "./components/Logo";
-import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
+import { Provider } from "react-redux";
+import generateStore from "./redux/store";
+import { withAuthenticator } from "@aws-amplify/ui-react";
+
+import Instacota from "./Instacota";
 
 const App = () => {
+  const store = generateStore();
   return (
-    <div>
-      <GlobalStyle />
-      <Logo />
-      <ListOfCategories />
-      <ListOfPhotoCards />
-      <AmplifySignOut />
-    </div>
+    <Provider store={store}>
+      <Instacota />
+    </Provider>
   );
 };
 

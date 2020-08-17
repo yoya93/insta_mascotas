@@ -1,18 +1,24 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Img, ImgWrapper, Button, Article } from "./styles";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
+import { API } from "aws-amplify";
+import { Link } from "react-router-dom";
 
 export const PhotoCard = (props) => {
   const { id } = props;
   const key = `like-${id}`;
 
+  const [numLikes, setNumLikes] = useState(props.likes);
+
   const element = useRef(null);
   const [show, setShow] = useState(false);
   const [likes, setLikes] = useState(() => {
     try {
-      const like = window.localStorage.getItem(key);
+      const like = window.localStorage.getItem(key) === "true";
       return like;
     } catch (error) {
+      console.log(error);
+
       return false;
     }
   });
@@ -38,26 +44,51 @@ export const PhotoCard = (props) => {
     }
   };
 
+  const putData = async () => {
+    let currentLike = numLikes;
+    try {
+      setLocalStorage(!likes);
+      likes ? (currentLike = currentLike - 1) : (currentLike = currentLike + 1);
+
+      const query = {
+        // OPTIONAL
+        body: {
+          id: props.id,
+          categoryId: props.categoryId,
+          src: props.src,
+          userId: props.userId,
+          likes: currentLike,
+        }, // replace this with attributes you need
+        headers: {}, // OPTIONAL
+      };
+
+      await API.put("mascots", "/mascots/photocard", query);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <Article ref={element}>
       {show && (
         <div>
-          <a href={`/detail/${props.id}`}>
+          <Link to={`/detail/${props.id}`}>
             <ImgWrapper>
               <Img src={props.src} />
             </ImgWrapper>
-          </a>
+          </Link>
           <Button
             onClick={() => {
-              setLocalStorage(!likes);
+              !likes ? setNumLikes(numLikes + 1) : setNumLikes(numLikes - 1);
+              putData();
             }}
           >
-            {likes ? (
-              <MdFavorite size="32px" />
-            ) : (
+            {!likes ? (
               <MdFavoriteBorder size="32px" />
+            ) : (
+              <MdFavorite size="32px" />
             )}
-            {props.likes} likes
+            {numLikes} likes
           </Button>
         </div>
       )}

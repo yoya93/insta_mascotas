@@ -3,64 +3,56 @@
     {
       "id": "7ec3d2f0-641e-11e9-9d5d-1b8ad05606d1",
       "password": "$2b$10$RNCVsIxNLKP8Gl.BPoedXuwGczl527UfsLDYcb.9V856ng4kxULrS",
-      "favs": [
-        "18",
-        "1"
-      ],
+      "favs": ["18", "1"],
       "avatar": "https://gravatar.com/avatar/8e04be7dab487d77f16969fd3e0d45d4",
       "email": "miduga@gmail.com"
     },
     {
       "id": "a882e1d0-6428-11e9-9b1f-8980b7d40890",
       "password": "$2b$10$BffxqFIacmPkKr2VZgyu7.r0nMmCMbL3nNw3CdWLpKVSKWkUAQGJS",
-      "favs": [
-        "18",
-        "16",
-        "1",
-        "15"
-      ],
+      "favs": ["18", "16", "1", "15"],
       "avatar": "https://gravatar.com/avatar/3bccd59be0a57b39bdd9b2760702795e",
       "email": "dani@gmail.com"
     }
   ],
   "categories": [
     {
-      "id": 1,
+      "id": "1",
       "name": "cats",
       "emoji": "🐱",
       "cover": "https://res.cloudinary.com/midudev/image/upload/w_150/v1555671700/category_cats.jpg",
       "path": "/photos/cats"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "dogs",
       "emoji": "🐶",
       "cover": "https://res.cloudinary.com/midudev/image/upload/w_150/v1555671700/category_dogs.jpg",
       "path": "/photos/dogs"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "hamsters",
       "emoji": "🐹",
       "cover": "https://res.cloudinary.com/midudev/image/upload/w_150/v1555671700/category_hamsters.jpg",
       "path": "/photos/hamsters"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "rabbits",
       "emoji": "🐰",
       "cover": "https://res.cloudinary.com/midudev/image/upload/w_150/v1555671700/category_rabbits.jpg",
       "path": "/photos/rabbits"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "birds",
       "emoji": "🐦",
       "cover": "https://res.cloudinary.com/midudev/image/upload/w_150/v1555671700/category_birds.jpg",
       "path": "/photos/birds"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "fishes",
       "emoji": "🐠",
       "cover": "https://res.cloudinary.com/midudev/image/upload/w_150/v1555671700/category_fishes.jpg",
@@ -69,147 +61,147 @@
   ],
   "photos": [
     {
-      "id": 0,
+      "id": "96f8d6d2-d877-4292-b7f2-c18d19ec2298",
       "categoryId": 2,
       "src": "https://res.cloudinary.com/midudev/image/upload/w_300/q_80/v1560262103/dogs.png",
       "userId": 100,
       "likes": 7
     },
     {
-      "id": 1,
+      "id": "2dc33801-aae4-433e-9119-0ab23eb06c4b",
       "categoryId": 1,
       "src": "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "userId": 1,
       "likes": 45
     },
     {
-      "id": 15,
+      "id": "f4223162-2a48-4cff-9130-6e214958b494",
       "categoryId": 4,
       "src": "https://images.unsplash.com/photo-1520561805070-83c413349512?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "userId": 1,
       "likes": 1
     },
     {
-      "id": 18,
+      "id": "a0d896f9-a6cc-46bf-9e9b-f17893d5197b",
       "categoryId": 5,
       "src": "https://images.unsplash.com/photo-1518001589401-1743b61d1def?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "userId": 2,
       "likes": 15
     },
     {
-      "id": 16,
+      "id": "0e332ec1-0841-4486-a5cd-3a3964c7714c",
       "categoryId": 4,
       "src": "https://images.unsplash.com/photo-1452857297128-d9c29adba80b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "userId": 1,
       "likes": 1
     },
     {
-      "id": 7,
-      "categoryId": 2,
+      "id": "1927b160-1289-4fc4-b054-73a40cf577a8",
+      "categoryId": "4b29306a-0810-4ca0-86c5-7c739d749691",
       "src": "https://images.unsplash.com/photo-1508280756091-9bdd7ef1f463?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "userId": 1,
       "likes": 40
     },
     {
-      "id": 12,
+      "id": "5c47c472-fbbd-4646-8e3d-c1721dc1c29e",
       "categoryId": 3,
       "src": "https://images.unsplash.com/photo-1553987882-91d92995e16c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "userId": 3,
       "likes": 6
     },
     {
-      "id": 13,
+      "id": "a2a27c50-3d32-4d10-a1bd-edfbb9cc3884",
       "categoryId": 1,
       "src": "https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "userId": 1,
       "likes": 7
     },
     {
-      "id": 11,
+      "id": "7b9350af-b064-4345-82bd-a3a373a169b5",
       "categoryId": 3,
       "src": "https://images.unsplash.com/photo-1548767797-d8c844163c4c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "userId": 1,
       "likes": 40
     },
     {
-      "id": 5,
+      "id": "9b2f6937-17a1-416f-b619-9f874572f3a5",
       "categoryId": 2,
       "src": "https://images.unsplash.com/photo-1507146426996-ef05306b995a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "userId": 1,
       "likes": 0
     },
     {
-      "id": 2,
+      "id": "6d1af617-770e-449a-9f8e-d2774ce30737",
       "categoryId": 1,
       "src": "https://images.unsplash.com/photo-1494256997604-768d1f608cac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "userId": 1,
       "likes": 3
     },
     {
-      "id": 9,
+      "id": "03951ab3-054e-48f5-80c6-c9ec5c272a6e",
       "categoryId": 2,
       "src": "https://images.unsplash.com/photo-1518155317743-a8ff43ea6a5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "userId": 1,
       "likes": 0
     },
     {
-      "id": 8,
+      "id": "b220d846-269b-4859-b8f6-936346d3e6e3",
       "categoryId": 2,
       "src": "https://images.unsplash.com/photo-1447684808650-354ae64db5b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "userId": 1,
       "likes": 0
     },
     {
-      "id": 3,
+      "id": "5e6264f5-22cb-4c4a-8670-64d68edef384",
       "categoryId": 1,
       "src": "https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "userId": 1,
       "likes": 7
     },
     {
-      "id": 19,
+      "id": "b094d8ff-4fb5-40f7-9c79-a5f0916bf3c5",
       "categoryId": 6,
       "src": "https://images.unsplash.com/photo-1531523668299-e20047c89111?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "userId": 1,
       "likes": 0
     },
     {
-      "id": 4,
+      "id": "0b2e1da9-f51a-4f5b-8dfe-f315d82bc3d5",
       "categoryId": 2,
       "src": "https://images.unsplash.com/photo-1500879747858-bb1845b61beb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "userId": 1,
       "likes": 27
     },
     {
-      "id": 10,
+      "id": "d625f46f-1a17-49d0-93c3-01bb222b58e8",
       "categoryId": 3,
       "src": "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "userId": 1,
       "likes": 0
     },
     {
-      "id": 17,
+      "id": "4ce8610b-a2f0-4d0f-8e1c-ce96f6b517cf",
       "categoryId": 5,
       "src": "https://images.unsplash.com/photo-1515619363794-e826f7de3487?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "userId": 1,
       "likes": 21
     },
     {
-      "id": 6,
+      "id": "05b95e0b-d58d-47aa-bdd9-b00da2813238",
       "categoryId": 2,
       "src": "https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "userId": 1,
       "likes": 0
     },
     {
-      "id": 20,
+      "id": "4812394a-8763-445a-a88e-de3d1bea5da4",
       "categoryId": 6,
       "src": "https://images.unsplash.com/photo-1522720833375-9c27ffb02a5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "userId": 1,
       "likes": 0
     },
     {
-      "id": 14,
+      "id": "ca0007b0-b840-44e7-9829-fba9caaf1f16",
       "categoryId": 2,
       "src": "https://images.unsplash.com/photo-1500879747858-bb1845b61beb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
       "userId": 1,

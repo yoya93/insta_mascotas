@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Category } from "../Category";
 import { List, Item } from "./styles";
-import { categories } from "../../api/db.json";
+
+import { useSelector } from "react-redux";
 
 export const ListOfCategories = () => {
   const [showFixed, setShowFixed] = useState(false);
@@ -21,11 +22,13 @@ export const ListOfCategories = () => {
     [showFixed]
   );
 
+  const categories = useSelector((store) => store.categories.array);
+
   const ListRender = (fixed) => (
     <List fixed={fixed}>
       {categories.map((category) => (
         <Item key={category.id}>
-          <Category {...category} />
+          <Category {...category} path={`/pet/${category.id}`} />
         </Item>
       ))}
     </List>
