@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/styles";
 import { AmplifySignOut } from "@aws-amplify/ui-react";
 
@@ -7,6 +7,10 @@ import { Auth } from "aws-amplify";
 import PhoneInput from "react-phone-input-2";
 import "material-ui-phone-number";
 import "../css/material.css";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { getUserAccion } from "../redux/UserDucks";
+import LinearProgress from "@material-ui/core/LinearProgress";
 
 import {
   Card,
@@ -28,18 +32,21 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const User = (props) => {
-  const { user } = props;
-
-  // let [values] = {
-  //   userName: user.username,
-  //   email: user.attributes.email,
-  //   phone: user.attributes.phone_number,
-  // };
-
-  console.log(Auth.signOut());
-
+export const User = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((store) => store.user.object);
+  const loading = useSelector((store) => store.user.loading);
   const classes = useStyles();
+
+  useEffect(() => {
+    Get_User();
+  }, []);
+
+  const Get_User = () => {
+    dispatch(getUserAccion());
+  };
+
+  //useEffect(() => dispatch(getUserAccion()), []);
 
   // const signOut = async () => {
   //   try {
@@ -52,7 +59,9 @@ export const User = (props) => {
   //   }
   // };
 
-  return (
+  return !loading ? (
+    <LinearProgress />
+  ) : (
     <Card>
       <form>
         <CardContent>
