@@ -3,7 +3,6 @@ import { Img, ImgWrapper, Button, Article } from "./styles";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { API } from "aws-amplify";
 import { Link } from "react-router-dom";
-import { uuid } from "uuidv4";
 
 export const PhotoCard = (props) => {
   const { id } = props;
@@ -63,7 +62,7 @@ export const PhotoCard = (props) => {
         headers: {}, // OPTIONAL
       };
 
-      const photosData = await API.put("mascots", "/mascots/photocard", query);
+      await API.put("mascots", "/mascots/photocard", query);
     } catch (err) {
       console.log(err);
     }

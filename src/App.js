@@ -1,8 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Amplify, { Auth } from "aws-amplify";
+import { Auth } from "aws-amplify";
 import { GlobalStyle } from "./styles/GlobalStyles";
-import { ListOfPhotoCards } from "./components/ListOfPhotoCards";
 import { Logo } from "./components/Logo";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import { Home } from "./pages/Home";
