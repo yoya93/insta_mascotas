@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { GlobalStyle } from "./styles/GlobalStyles";
 import { Logo } from "./components/Logo";
@@ -9,19 +9,15 @@ import { detailPhoto } from "./pages/detailPhoto";
 import { Navbar } from "./components/Navbar/Navbar";
 import { Fav } from "./pages/Fav";
 import { User } from "./pages/User";
-import generateStore from "./redux/store";
-
 import { useDispatch } from "react-redux";
 import { getCategoriesAccion } from "./redux/CategoriesDucks";
 import { getPhotoAccion } from "./redux/PhotoDucks";
 
 const Instacota = () => {
-  const [user, setUser] = useState(null);
-
   useEffect(() => {
     Get_Categories();
     Get_Photo();
-  }, []);
+  });
 
   const Get_Categories = () => {
     dispatch(getCategoriesAccion());

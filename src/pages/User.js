@@ -1,9 +1,6 @@
 import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/styles";
 import { AmplifySignOut } from "@aws-amplify/ui-react";
-
-import { Auth } from "aws-amplify";
-//import { useHistory } from "react-router-dom";
 import PhoneInput from "react-phone-input-2";
 import "material-ui-phone-number";
 import "../css/material.css";
@@ -40,7 +37,7 @@ export const User = () => {
 
   useEffect(() => {
     Get_User();
-  }, []);
+  });
 
   const Get_User = () => {
     dispatch(getUserAccion());
