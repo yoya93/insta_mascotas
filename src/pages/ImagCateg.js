@@ -5,25 +5,12 @@ import { API } from "aws-amplify";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { ListOfCategories } from "../components/ListOfCategories";
 
+import { useSelector } from "react-redux";
+
 export const ImagCateg = (props) => {
-  const [state, setState] = useState([]);
-  const [loading, setLoading] = useState(false);
-  console.log(props.match.params.Category);
+  const photosData = useSelector((store) => store.photos.array);
+  const loading = useSelector((store) => store.photos.loading);
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const photosData = await API.get("mascots", "/mascots/photocard");
-        setState(photosData.data);
-        setLoading(true);
-        console.log(state);
-      } catch (err) {
-        console.log("error fetching from Lambda API");
-      }
-    };
-
-    getData();
-  }, []);
   return (
     <Fragment>
       <ListOfCategories />
@@ -32,7 +19,7 @@ export const ImagCateg = (props) => {
       ) : (
         <Fragment>
           <ul>
-            {state.map((photo) => {
+            {photosData.map((photo) => {
               return (
                 photo.categoryId === Number(props.match.params.Category) && (
                   <li key={photo.id}>

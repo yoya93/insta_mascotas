@@ -1,33 +1,21 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
 
 import { PhotoCard } from "../PhotoCard";
-import { API } from "aws-amplify";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import { useSelector } from "react-redux";
 
 export const ListOfPhotoCards = (props) => {
-  const [state, setState] = useState([]);
-  const [loading, setLoading] = useState(false);
   const { detailId } = props;
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const photosData = await API.get("mascots", "/mascots/photocard");
-        setState(photosData.data);
-        setLoading(true);
-      } catch (err) {
-        console.log("error fetching from Lambda API");
-      }
-    };
+  const photosData = useSelector((store) => store.photos.array);
+  let loading = useSelector((store) => store.photos.loading);
 
-    getData();
-  }, []);
   return !loading ? (
     <LinearProgress />
   ) : detailId ? (
     <Fragment>
       <ul>
-        {state.map((photo) => {
+        {photosData.map((photo) => {
           return (
             photo.id === detailId && <PhotoCard key={photo.id} {...photo} />
           );
@@ -37,7 +25,7 @@ export const ListOfPhotoCards = (props) => {
   ) : (
     <Fragment>
       <ul>
-        {state.map((photo) => (
+        {photosData.map((photo) => (
           <li key={photo.id}>
             <PhotoCard {...photo} />
           </li>
