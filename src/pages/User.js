@@ -1,13 +1,12 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
-import { AmplifySignOut } from "@aws-amplify/ui-react";
+
 import PhoneInput from "react-phone-input-2";
 import "material-ui-phone-number";
 import "../css/material.css";
 import { useSelector } from "react-redux";
 
 import LinearProgress from "@material-ui/core/LinearProgress";
-
 import {
   Card,
   CardContent,
@@ -28,21 +27,10 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const User = () => {
+export const User = (props) => {
   const user = useSelector((store) => store.user.object);
   const loading = useSelector((store) => store.user.loading);
   const classes = useStyles();
-
-  // const signOut = async () => {
-  //   try {
-  //     await Auth.signOut();
-  //     history.entries = [];
-  //     history.index = -1;
-  //     history.patch(`/`);
-  //   } catch (error) {
-  //     console.log("error signing out: ", error);
-  //   }
-  // };
 
   return !loading ? (
     <LinearProgress />
@@ -101,7 +89,6 @@ export const User = () => {
           </Grid>
         </CardActions>
       </form>
-      <AmplifySignOut buttonText="Sign Out" />
     </Card>
   );
 };

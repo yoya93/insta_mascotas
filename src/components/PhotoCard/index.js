@@ -63,7 +63,7 @@ export const PhotoCard = (props) => {
       headers: {}, // OPTIONAL
     };
     dispatch(putPhotoAccion(query));
-
+  };
   return (
     <Article ref={element}>
       {show && (
