@@ -46,7 +46,8 @@ export const PhotoCard = (props) => {
     }
   };
 
-  const putData = async () => {
+  const putData = async () => 
+  {
     let currentLike = numLikes;
     setLocalStorage(!likes);
     likes ? (currentLike = currentLike - 1) : (currentLike = currentLike + 1);
@@ -64,7 +65,6 @@ export const PhotoCard = (props) => {
     };
     dispatch(putPhotoAccion(query));
   };
-
   return (
     <Article ref={element}>
       {show && (
