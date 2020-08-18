@@ -42,22 +42,3 @@ export const getCategoriesAccion = () => async (dispatch, getState) => {
     console.log("error fetching from Lambda API");
   }
 };
-// export const getPokeAccionSiguiente = () => async (dispath, getState) => {
-//   try {
-//     const offset = getState().pokemones.offset;
-//     const siguiente = offset + 20;
-//     console.log(offset);
-//     const res = await axios(
-//       `https://pokeapi.co/api/v2/pokemon?offset=${siguiente}=0&limit=20`
-//     );
-//     dispath({
-//       type: Get_Siguiente_poke_exito,
-//       pyload: {
-//         array: res.data.results,
-//         offset: siguiente,
-//       },
-//     });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
