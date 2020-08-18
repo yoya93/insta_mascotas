@@ -51,3 +51,11 @@ export const getPhotoAccion = () => async (dispatch, getState) => {
     console.log("error fetching from Lambda API");
   }
 };
+
+export const putPhotoAccion = (query) => async (dispatch, getState) => {
+  try {
+    await API.put("mascots", "/mascots/photocard", query);
+  } catch (error) {
+    console.log("error put from Lambda API");
+  }
+};
