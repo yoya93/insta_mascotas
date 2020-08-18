@@ -64,28 +64,6 @@ export const PhotoCard = (props) => {
     };
     dispatch(putPhotoAccion(query));
 
-    // try {
-    //   setLocalStorage(!likes);
-    //   likes ? (currentLike = currentLike - 1) : (currentLike = currentLike + 1);
-
-    //   const query = {
-    //     // OPTIONAL
-    //     body: {
-    //       id: props.id,
-    //       categoryId: props.categoryId,
-    //       src: props.src,
-    //       userId: props.userId,
-    //       likes: currentLike,
-    //     }, // replace this with attributes you need
-    //     headers: {}, // OPTIONAL
-    //   };
-
-    //   await API.put("mascots", "/mascots/photocard", query);
-    // } catch (err) {
-    //   console.log(err);
-    // }
-  };
-
   return (
     <Article ref={element}>
       {show && (
