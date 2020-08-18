@@ -12,11 +12,14 @@ import { User } from "./pages/User";
 import { useDispatch } from "react-redux";
 import { getCategoriesAccion } from "./redux/CategoriesDucks";
 import { getPhotoAccion } from "./redux/PhotoDucks";
+import { getUserAccion } from "./redux/UserDucks";
 
 const Instacota = () => {
+  const dispatch = useDispatch();
   useEffect(() => {
     Get_Categories();
     Get_Photo();
+    Get_User();
   });
 
   const Get_Categories = () => {
@@ -25,10 +28,9 @@ const Instacota = () => {
   const Get_Photo = () => {
     dispatch(getPhotoAccion());
   };
-  const dispatch = useDispatch();
-
-  // useEffect(() => dispatch(getCategoriesAccion()), []);
-  // useEffect(() => dispatch(getPhotoAccion()), []);
+  const Get_User = () => {
+    dispatch(getUserAccion());
+  };
 
   return (
     <div>
