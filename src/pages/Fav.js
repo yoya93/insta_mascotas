@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { PhotoCard } from "../components/PhotoCard";
-import { API } from "aws-amplify";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { useSelector } from "react-redux";
 

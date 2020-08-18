@@ -1,15 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import { AmplifySignOut } from "@aws-amplify/ui-react";
-
-import { Auth } from "aws-amplify";
-//import { useHistory } from "react-router-dom";
 import PhoneInput from "react-phone-input-2";
 import "material-ui-phone-number";
 import "../css/material.css";
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { getUserAccion } from "../redux/UserDucks";
+
 import LinearProgress from "@material-ui/core/LinearProgress";
 
 import {
@@ -33,20 +29,9 @@ const useStyles = makeStyles(() => ({
 }));
 
 export const User = () => {
-  const dispatch = useDispatch();
   const user = useSelector((store) => store.user.object);
   const loading = useSelector((store) => store.user.loading);
   const classes = useStyles();
-
-  useEffect(() => {
-    Get_User();
-  }, []);
-
-  const Get_User = () => {
-    dispatch(getUserAccion());
-  };
-
-  //useEffect(() => dispatch(getUserAccion()), []);
 
   // const signOut = async () => {
   //   try {
