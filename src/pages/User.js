@@ -1,6 +1,5 @@
 import React from "react";
-import { makeStyles } from "@material-ui/styles";
-
+import SimpleModal from "./Modal";
 import PhoneInput from "react-phone-input-2";
 import "material-ui-phone-number";
 import "../css/material.css";
@@ -13,24 +12,12 @@ import {
   CardActions,
   Divider,
   Grid,
-  Button,
   TextField,
 } from "@material-ui/core";
-
-const useStyles = makeStyles(() => ({
-  button: {
-    "& .MuiButtonBase-root": {
-      color: "#ffffff",
-      backgroundColor: "#ff9900",
-      fontSize: "0.75rem",
-    },
-  },
-}));
 
 export const User = (props) => {
   const user = useSelector((store) => store.user.object);
   const loading = useSelector((store) => store.user.loading);
-  const classes = useStyles();
 
   return !loading ? (
     <LinearProgress />
@@ -83,9 +70,9 @@ export const User = (props) => {
           </Grid>
         </CardContent>
         <Divider />
-        <CardActions className={classes.button}>
+        <CardActions>
           <Grid container justify="center">
-            <Button variant="contained"> Change Password</Button>
+            <SimpleModal />
           </Grid>
         </CardActions>
       </form>
