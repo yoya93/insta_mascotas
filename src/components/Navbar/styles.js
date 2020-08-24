@@ -12,7 +12,7 @@ export const Nav = styled.nav`
   left: 0;
   margin: 0 auto;
   max-width: 500px;
-  position: inherit;
+  position: fixed;
   right: 0;
   width: 100%;
   z-index: 1000;
@@ -30,6 +30,7 @@ export const Link = styled(NavLink)`
 
   &[aria-current] {
     color: #000;
+    background: lightgray;
 
     &:after {
       ${fadeIn({ time: "0.5s" })};
