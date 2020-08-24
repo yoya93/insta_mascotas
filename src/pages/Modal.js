@@ -131,9 +131,8 @@ const schema = {
   },
 };
 
-export default function SimpleModal() {
+export default function SimpleModal(props) {
   const [errorMessage, setErrorMessage] = useState(null);
-  const [message, setMessage] = useState(null);
 
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
@@ -180,21 +179,19 @@ export default function SimpleModal() {
     try {
       const currentUser = await Auth.currentAuthenticatedUser();
       await Auth.changePassword(currentUser, currentPassword, newPassword);
-      setMessage(
-        "Password has been changed. Please go back or change the password again"
-      );
+      props.onChangePassword(true);
       setFormState({
         isValid: false,
         values: {},
         touched: {},
         errors: {},
       });
-      setErrorMessage(null);
+      setOpen(false);
     } catch (error) {
       if (error.message === "Incorrect username or password.")
         error.message = "incorrect Current password ";
-
       setErrorMessage(error.message);
+      props.onChangePassword(false);
     }
   }
 
@@ -242,15 +239,6 @@ export default function SimpleModal() {
                   severity="error"
                 >
                   {errorMessage}
-                </Alert>
-              )}
-              {message && (
-                <Alert
-                  className={classes.errorMessage}
-                  variant="outlined"
-                  severity="success"
-                >
-                  {message}
                 </Alert>
               )}
 
