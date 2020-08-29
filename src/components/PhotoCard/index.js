@@ -1,12 +1,14 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Img, ImgWrapper, Button, Article } from "./styles";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
-import { API } from "aws-amplify";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { putPhotoAccion } from "../../redux/PhotoDucks";
 
 export const PhotoCard = (props) => {
   const { id } = props;
   const key = `like-${id}`;
+  const dispatch = useDispatch();
 
   const [numLikes, setNumLikes] = useState(props.likes);
 
@@ -44,30 +46,25 @@ export const PhotoCard = (props) => {
     }
   };
 
-  const putData = async () => {
+  const putData = async () => 
+  {
     let currentLike = numLikes;
-    try {
-      setLocalStorage(!likes);
-      likes ? (currentLike = currentLike - 1) : (currentLike = currentLike + 1);
+    setLocalStorage(!likes);
+    likes ? (currentLike = currentLike - 1) : (currentLike = currentLike + 1);
 
-      const query = {
-        // OPTIONAL
-        body: {
-          id: props.id,
-          categoryId: props.categoryId,
-          src: props.src,
-          userId: props.userId,
-          likes: currentLike,
-        }, // replace this with attributes you need
-        headers: {}, // OPTIONAL
-      };
-
-      await API.put("mascots", "/mascots/photocard", query);
-    } catch (err) {
-      console.log(err);
-    }
+    const query = {
+      // OPTIONAL
+      body: {
+        id: props.id,
+        categoryId: props.categoryId,
+        src: props.src,
+        userId: props.userId,
+        likes: currentLike,
+      }, // replace this with attributes you need
+      headers: {}, // OPTIONAL
+    };
+    dispatch(putPhotoAccion(query));
   };
-
   return (
     <Article ref={element}>
       {show && (

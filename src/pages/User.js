@@ -1,122 +1,106 @@
-import React, { useEffect } from "react";
-import { makeStyles } from "@material-ui/styles";
-import { AmplifySignOut } from "@aws-amplify/ui-react";
-
-import { Auth } from "aws-amplify";
-//import { useHistory } from "react-router-dom";
+import React, { useState, Fragment } from "react";
+import SimpleModal from "./Modal";
 import PhoneInput from "react-phone-input-2";
 import "material-ui-phone-number";
 import "../css/material.css";
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { getUserAccion } from "../redux/UserDucks";
-import LinearProgress from "@material-ui/core/LinearProgress";
+import { Alert, AlertTitle } from "@material-ui/lab";
 
+import LinearProgress from "@material-ui/core/LinearProgress";
 import {
   Card,
   CardContent,
   CardActions,
   Divider,
   Grid,
-  Button,
   TextField,
 } from "@material-ui/core";
 
-const useStyles = makeStyles(() => ({
-  button: {
-    "& .MuiButtonBase-root": {
-      color: "#ffffff",
-      backgroundColor: "#ff9900",
-      fontSize: "0.75rem",
-    },
-  },
-}));
-
-export const User = () => {
-  const dispatch = useDispatch();
+export const User = (props) => {
   const user = useSelector((store) => store.user.object);
   const loading = useSelector((store) => store.user.loading);
-  const classes = useStyles();
 
-  useEffect(() => {
-    Get_User();
-  }, []);
+  const [changuePasword, setchanguePasword] = useState(false);
 
-  const Get_User = () => {
-    dispatch(getUserAccion());
+  const handleStateChangePassword = (bool) => {
+    setchanguePasword(bool);
+    if (bool) {
+      setTimeout(() => {
+        setchanguePasword(false);
+      }, 4000);
+    }
   };
 
-  //useEffect(() => dispatch(getUserAccion()), []);
-
-  // const signOut = async () => {
-  //   try {
-  //     await Auth.signOut();
-  //     history.entries = [];
-  //     history.index = -1;
-  //     history.patch(`/`);
-  //   } catch (error) {
-  //     console.log("error signing out: ", error);
-  //   }
-  // };
+  console.log(changuePasword);
 
   return !loading ? (
     <LinearProgress />
   ) : (
-    <Card>
-      <form>
-        <CardContent>
-          <Grid container spacing={3}>
-            <Grid item md={6} xs={6}>
-              <TextField
-                fullWidth
-                helperText="Please specify the first name"
-                label="First name"
-                margin="dense"
-                name="firstName"
-                // onChange={handleChange}
-                required
-                value={user.username}
-                variant="outlined"
-                disabled
-              />
+    <Fragment>
+      {changuePasword && (
+        <div>
+          <Alert severity="success">
+            <AlertTitle>Password Changed</AlertTitle>
+            Your password was changed — <strong>successfully!</strong>
+          </Alert>
+        </div>
+      )}
+
+      <Card>
+        <form>
+          <CardContent>
+            <Grid container spacing={3}>
+              <Grid item md={6} xs={6}>
+                <TextField
+                  fullWidth
+                  helperText="Please specify the first name"
+                  label="First name"
+                  margin="dense"
+                  name="firstName"
+                  // onChange={handleChange}
+                  required
+                  value={user.username}
+                  variant="outlined"
+                  disabled
+                />
+              </Grid>
+              <Grid item md={6} xs={6}>
+                <PhoneInput
+                  defaultCountry="us"
+                  name="phone"
+                  required
+                  value={user.attributes.phone_number}
+                  //onChange={handleChangePhoneNumber}
+                  variant="outlined"
+                  regiones={" europa "}
+                  disabled={true}
+                />
+              </Grid>
             </Grid>
-            <Grid item md={6} xs={6}>
-              <PhoneInput
-                defaultCountry="us"
-                name="phone"
-                required
-                value={user.attributes.phone_number}
-                //onChange={handleChangePhoneNumber}
-                variant="outlined"
-                regiones={" europa "}
-                disabled={true}
-              />
+            <Grid container spacing={3}>
+              <Grid item md={12} xs={12}>
+                <TextField
+                  fullWidth
+                  label="Email Address"
+                  margin="dense"
+                  name="email"
+                  // onChange={handleChange}
+                  required
+                  value={user.attributes.email}
+                  variant="outlined"
+                  disabled
+                />
+              </Grid>
             </Grid>
-          </Grid>
-          <Grid container spacing={3}>
-            <Grid item md={12} xs={12}>
-              <TextField
-                fullWidth
-                label="Email Address"
-                margin="dense"
-                name="email"
-                // onChange={handleChange}
-                required
-                value={user.attributes.email}
-                variant="outlined"
-                disabled
-              />
+          </CardContent>
+          <Divider />
+          <CardActions>
+            <Grid container justify="center">
+              <SimpleModal onChangePassword={handleStateChangePassword} />
             </Grid>
-          </Grid>
-        </CardContent>
-        <Divider />
-        <CardActions className={classes.button}>
-          <Grid container justify="center">
-            <Button variant="contained"> Change Password</Button>
-          </Grid>
-        </CardActions>
-      </form>
-      <AmplifySignOut buttonText="Sign Out" />
-    </Card>
+          </CardActions>
+        </form>
+      </Card>
+    </Fragment>
   );
 };
