@@ -7,6 +7,8 @@ Estado de proyecto
 Este proyecto se encuentra actualmente en desarrollo. Los usuarios pueden crear su perfil cambiar su contraseña asi como salir de su perfil ademas de poder seleccionar sus imagenes favoritas  . La funcionalidad para ingresar las fotos por parte del usuario  está en progreso.
 
 Captura de pantalla del proyecto
+
+
 <img src="Captura de pantalla de 2020-08-29 09-57-33.png" alt="Captura de pantalla"/>
 
 Link para acceder a la app
